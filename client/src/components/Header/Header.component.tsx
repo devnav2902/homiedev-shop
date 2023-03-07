@@ -9,7 +9,7 @@ const Header = () => {
     <div className="py-5">
       <div>
         <Link href={routes.home}>
-          <Image src={Logo} alt="logo" />
+          <Image src={Logo} alt="logo" width={120} />
         </Link>
       </div>
     </div>
