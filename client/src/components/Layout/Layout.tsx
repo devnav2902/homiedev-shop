@@ -8,11 +8,11 @@ interface Props {
 
 const Layout: FC<Props> = ({ children }) => {
   return (
-    <>
+    <div className="">
       <Header />
-      <main>{children}</main>
+      <main className="min-h-[120vh]">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 };
 
