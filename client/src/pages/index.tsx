@@ -1,45 +1,17 @@
-import {
-  ArrowSmallLeftIcon,
-  ArrowSmallRightIcon,
-} from "@heroicons/react/20/solid";
-import WrapperDialog from "components/Dialog/Dialog.component";
-import Product, { ProductProps } from "components/Product/Product.component";
+import SwiperButton from "components/Button/SwiperButton.component";
+import Product from "components/Product/Product.component";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import { useState } from "react";
 import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { useDialog } from "utils/customHooks";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { products } from "utils/data";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const slideBtnClass =
   "absolute w-[50px] h-[50px] rounded-full border border-[#121212] text-[#151515] flex item-centers z-[999] bottom-[10%] right-[40px] opacity-[0.7] flex items-center justify-center";
-
-function SlideNextButton() {
-  const swiper = useSwiper();
-
-  return (
-    <button className={slideBtnClass + ""} onClick={() => swiper.slideNext()}>
-      <ArrowSmallRightIcon width={28} />
-    </button>
-  );
-}
-
-function SlidePrevButton() {
-  const swiper = useSwiper();
-
-  return (
-    <button
-      className={slideBtnClass + " !right-[100px]"}
-      onClick={() => swiper.slidePrev()}
-    >
-      <ArrowSmallLeftIcon width={28} />
-    </button>
-  );
-}
 
 export default function Home() {
   const slides = [
@@ -69,73 +41,6 @@ export default function Home() {
     },
   ];
 
-  const products = [
-    {
-      img: "/images/product_1.png",
-      title: "Half Running Set",
-      price: [99, 129],
-      categories: ["SALE", "NEW"],
-      colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
-      link: "1",
-    },
-    {
-      img: "/images/product_2.png",
-      title: "Formal Men Lowers",
-      price: [99, 129],
-      categories: ["SALE", "NEW"],
-      colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
-      link: "2",
-    },
-    {
-      img: "/images/product_3.png",
-      title: "Half Running Suit",
-      price: [99, 129],
-      categories: ["HOT"],
-      colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
-      link: "3",
-    },
-    {
-      img: "/images/product_4.png",
-      title: "Half Fancy Lady Dress",
-      price: [99, 129],
-      categories: [],
-      colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
-      link: "4",
-    },
-    {
-      img: "/images/product_5.png",
-      title: "Flix Flox Jeans",
-      price: [99, 129],
-      categories: ["HOT"],
-      colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
-      link: "5",
-    },
-    {
-      img: "/images/product_6.png",
-      title: "Fancy Salwar Suits",
-      price: [99, 129],
-      categories: ["HOT"],
-      colors: ["#379788", "#d1dceb", "#f4e6a2", "#f4e6a2"],
-      link: "6",
-    },
-    {
-      img: "/images/product_7.png",
-      title: "Printed Straight Kurta",
-      price: [99, 129],
-      categories: ["SALE", "HOT"],
-      colors: ["#6185c4", "#d1dceb", "#e36947", "#f4e6a2"],
-      link: "7",
-    },
-    {
-      img: "/images/product_8.png",
-      title: "Collot Full Dress",
-      price: [99, 129],
-      categories: ["HOT"],
-      colors: ["#becc36", "#d1dceb", "#e36947", "#f4e6a2"],
-      link: "8",
-    },
-  ];
-
   return (
     <>
       <div className="">
@@ -148,8 +53,17 @@ export default function Home() {
             modules={[Pagination]}
             slidesPerView={1}
           >
-            <SlideNextButton />
-            <SlidePrevButton />
+            <SwiperButton
+              button="right"
+              size={28}
+              defaultClassName={slideBtnClass}
+            />
+            <SwiperButton
+              button="left"
+              className="!right-[100px]"
+              size={28}
+              defaultClassName={slideBtnClass}
+            />
 
             {slides.map(
               ({ img, text, button, categories, summary, url }, index) => (

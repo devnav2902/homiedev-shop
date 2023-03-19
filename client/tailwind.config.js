@@ -9,6 +9,9 @@ module.exports = {
           "100%": { transform: "translate(0,0)" },
         },
       },
+      colors: {
+        "border-color": "#e9ecef",
+      },
     },
     // To center containers by default, set the center option to true
     container: {
