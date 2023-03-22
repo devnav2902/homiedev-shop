@@ -2,14 +2,9 @@ import AccountDashboardLayout from "components/AccountDashboardLayout/AccountDas
 import React from "react";
 import { classNames } from "utils/functions";
 import { BsEnvelope, BsCalendarWeek, BsPhone } from "react-icons/bs";
+import { inputClasses } from "utils/classNames";
 
 const AccountInformation = () => {
-  const inputClasses = classNames(
-    "border block w-full border-neutral-200",
-    "focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 focus:outline-none",
-    "bg-white disabled:bg-neutral-200 rounded-2xl text-sm font-normal h-11 px-4 py-3"
-  );
-
   const labelClasses = "text-base font-medium text-neutral-900 mb-1.5 block";
 
   const IconClasses =

@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -22,5 +24,36 @@ module.exports = {
       padding: "15px",
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/typography"),
+    plugin(function ({ addBase, addComponents, addUtilities, theme }) {
+      addUtilities({
+        ".hiddenScrollbar": {
+          /* IE and Edge */
+          "-ms-overflow-style": "none",
+
+          /* Firefox */
+          "scrollbar-width": "none",
+
+          /* Safari and Chrome */
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        },
+
+        ".scrollbar-default": {
+          /* IE and Edge */
+          "-ms-overflow-style": "auto",
+
+          /* Firefox */
+          "scrollbar-width": "auto",
+
+          /* Safari and Chrome */
+          "&::-webkit-scrollbar": {
+            display: "block",
+          },
+        },
+      });
+    }),
+  ],
 };

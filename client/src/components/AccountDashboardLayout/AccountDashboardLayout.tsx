@@ -29,8 +29,9 @@ const AccountDashboardLayout: FC<Props> = ({ children }) => {
           ciseco@gmail.com · Los Angeles, CA
         </span>
         <div className="flex space-x-8 md:space-x-14 border-t border-b border-[border-color] overflow-x-auto hiddenScrollbar">
-          {routes.map((item) => (
+          {routes.map((item, key) => (
             <Link
+              key={key}
               className={classNames(
                 "block py-5 md:py-8 border-transparent text-sm text-slate-500 border-b-2 flex-shrink-0",
                 "hover:text-slate-800",

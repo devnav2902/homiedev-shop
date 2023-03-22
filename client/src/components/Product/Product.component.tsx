@@ -6,6 +6,7 @@ import { HiEye, HiShoppingBag } from "react-icons/hi";
 import { HiOutlineHeart } from "react-icons/hi2";
 import { useDialog } from "utils/customHooks";
 import { classNames } from "utils/functions";
+import { CloseIcon } from "utils/icons";
 import ProductInformation from "./ProductInformation.component";
 
 export interface ProductProps {
@@ -26,10 +27,21 @@ const Product: FC<ProductProps> = (productDetails) => {
   return (
     <>
       <WrapperDialog isOpen={isOpen} toggleDialog={toggleDialog}>
-        <div className="grid md:grid-cols-[2fr_3fr] gap-5">
+        <button
+          onClick={toggleDialog}
+          className="absolute top-2.5 right-2.5 w-7 h-7 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-700"
+        >
+          <CloseIcon fontSize={20} />
+        </button>
+        <div className="grid md:grid-cols-[1fr_1fr] gap-7">
           <div>
-            <div className="relative pb-[120%]">
-              <Image src={img} fill alt="" />
+            <div className="relative aspect-[11/12]">
+              <Image
+                src={img}
+                fill
+                alt=""
+                className="object-cover rounded-2xl"
+              />
             </div>
           </div>
           <ProductInformation {...productDetails} />

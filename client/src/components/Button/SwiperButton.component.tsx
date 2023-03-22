@@ -11,7 +11,7 @@ interface Props {
 
 const SwiperButton: FC<Props> = ({
   defaultClassName,
-  className,
+  className = "",
   button,
   size = 28,
 }) => {

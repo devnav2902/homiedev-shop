@@ -8,23 +8,30 @@ import { IoResize } from "react-icons/io5";
 import { HiCheck } from "react-icons/hi";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { classNames } from "utils/functions";
+import { useNumberInput } from "utils/customHooks";
+import NumberInput from "components/NumberInput/NumberInput.component";
 
 const ShoppingCart = () => {
+  const inputData = useNumberInput();
+
   return (
     <AccountDashboardLayout>
       <div className="space-y-10 sm:space-y-12">
         <h2 className="text-2xl sm:text-3xl font-semibold">SHOPPING CART</h2>
 
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           <div
             className={classNames(
-              "w-full lg:w-[60%] xl:w-[55%]",
+              "w-full md:w-[60%] xl:w-[55%]",
               "divide-y divide-[border-color]"
             )}
           >
-            {products.slice(0, 5).map((product) => {
+            {products.slice(0, 5).map((product, key) => {
               return (
-                <div className="grid grid-cols-[auto_1fr] py-12 last:pb-0">
+                <div
+                  key={key}
+                  className="grid grid-cols-[auto_1fr] py-12 last:pb-0 first:pt-0"
+                >
                   <div className="mr-6 aspect-[11/12] relative w-[128px]">
                     <Image
                       className="rounded-xl"
@@ -55,15 +62,12 @@ const ShoppingCart = () => {
 
                       <div className="flex justify-between flex-grow">
                         <div className="mr-2 flex-shrink-0">
-                          <select className="min-w-[70px] text-sm rounded-md py-1 border border-slate-200 relative z-10">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                          </select>
+                          <NumberInput
+                            dataInput={inputData}
+                            wrapClassName="!p-1.5"
+                            btnClassName="!w-6 !h-6"
+                            containerClassName="!w-[90px]"
+                          />
                         </div>
 
                         <span className="self-start flex-shrink-0 rounded-lg border-2 border-green-500 text-green-500 font-medium py-1 px-5 text-sm">
@@ -89,8 +93,8 @@ const ShoppingCart = () => {
 
           <div
             className={classNames(
-              "border-t lg:border-t-0 lg:border-l border-[border-color]",
-              "my-10 lg:my-0 lg:mx-10 xl:mx-16 2xl:mx-20"
+              "border-t md:border-t-0 md:border-l border-[border-color]",
+              "my-10 md:my-0 md:mx-10 xl:mx-16 2xl:mx-20"
             )}
           ></div>
 

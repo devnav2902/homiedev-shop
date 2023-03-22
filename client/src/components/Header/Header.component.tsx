@@ -1,17 +1,18 @@
-import Link from "next/link";
-import React from "react";
-import routes from "utils/routes";
-import Image from "next/image";
 import Logo from "@public/images/logo.png";
-import { HiMenu } from "react-icons/hi";
+import Image from "next/image";
+import Link from "next/link";
+import { FC, useEffect, useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
-import { CgShoppingBag } from "react-icons/cg";
+import { HiMenu } from "react-icons/hi";
 import { HiMagnifyingGlass } from "react-icons/hi2";
-import { useEffect } from "react";
-import { useState } from "react";
+import { IconType } from "react-icons/lib";
 import { classNames } from "utils/functions";
+import { ShoppingBagIcon } from "utils/icons";
+import routes from "utils/routes";
+import CartDropdown from "./CartDropdown.component";
+import MenuDropdown from "./MenuDropdown.component";
 
-const Header = () => {
+const Header: FC = () => {
   const [
     isScrollValueMoreThanTargetValue,
     setIsScrollValueMoreThanTargetValue,
@@ -33,10 +34,14 @@ const Header = () => {
     };
   }, []);
 
-  const mobileNav = [
-    { className: "", icon: HiMagnifyingGlass },
-    { className: "", icon: AiOutlineUser },
-    { className: "", icon: CgShoppingBag, count: 0 },
+  const mobileNav: {
+    className: "user" | "bag" | null;
+    icon: IconType;
+    count?: number;
+  }[] = [
+    { className: null, icon: HiMagnifyingGlass },
+    { className: "user", icon: AiOutlineUser },
+    { className: "bag", icon: ShoppingBagIcon, count: 0 },
   ];
 
   const Menu = (
@@ -59,26 +64,43 @@ const Header = () => {
     </div>
   );
 
+  const renderIconByClassName = ({
+    className,
+    icon: Icon,
+  }: {
+    className: typeof mobileNav[0]["className"];
+    icon: IconType;
+  }): JSX.Element => {
+    if (className === "user")
+      return <MenuDropdown children={<Icon fontSize={22} />} />;
+    if (className === "bag")
+      return <CartDropdown children={<Icon fontSize={22} />} />;
+
+    return <Icon fontSize={22} />;
+  };
+
   const MobileNav = (
     <div className="ml-auto">
       <ul className="flex items-center">
-        {mobileNav.map(({ icon: Icon, count }, index) => (
+        {mobileNav.map(({ icon, count, className }, index) => (
           <li key={index} className="first:pl-0 pl-3 leading-none">
-            <span className="relative inline-block font-semibold cursor-pointer">
+            <div className="relative inline-block font-semibold">
               <button
+                type="button"
                 className={classNames(
-                  "text-slate-700 rounded-full w-12 h-12 flex justify-center items-center relative",
-                  "hover:bg-slate-100"
+                  "text-slate-700 rounded-full w-12 h-12 flex justify-center items-center",
+                  "hover:bg-slate-100",
+                  "cursor-pointer"
                 )}
               >
-                <Icon fontSize={22} />
+                {renderIconByClassName({ className, icon })}
                 {typeof count === "number" && (
                   <span className="w-3.5 h-3.5 text-[10px] rounded-full bg-blue-500 text-white flex items-center justify-center absolute right-1.5 top-1.5">
                     {count}
                   </span>
                 )}
               </button>
-            </span>
+            </div>
           </li>
         ))}
       </ul>

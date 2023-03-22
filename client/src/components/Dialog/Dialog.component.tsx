@@ -1,8 +1,9 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { FC, Fragment, ReactElement } from "react";
+import { classNames } from "utils/functions";
 
 interface Props {
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
   dialogTitle?: string;
   isOpen: boolean;
   toggleDialog: () => void;
@@ -29,8 +30,8 @@ const WrapperDialog: FC<Props> = ({
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-screen items-center justify-center p-4 text-center">
+        <div className="fixed inset-0">
+          <div className="flex items-center justify-center p-4 text-center h-full">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -40,16 +41,22 @@ const WrapperDialog: FC<Props> = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-[950px] transform overflow-y-auto rounded-md bg-white p-4 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full h-full max-w-5xl transform rounded-2xl bg-white p-7 text-left align-middle shadow-xl transition-all">
                 {dialogTitle && (
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-medium leading-6 text-gray-900 mb-2"
                   >
                     {dialogTitle}
                   </Dialog.Title>
                 )}
-                <div className={dialogTitle && "mt-2"}>{children}</div>
+                <div
+                  className={classNames(
+                    "hiddenScrollbar overflow-y-auto h-full"
+                  )}
+                >
+                  {children}
+                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
