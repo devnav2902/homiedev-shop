@@ -11,7 +11,7 @@ import { BiShare } from "react-icons/bi";
 import { MdOutlinePhotoLibrary } from "react-icons/md";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useDialog, useNumberInput } from "utils/customHooks";
+import { useDialog, useNumberInput, useSaveForLater } from "utils/customHooks";
 import { accordionPanels } from "utils/data";
 import { classNames } from "utils/functions";
 import { CloseIcon, HeartIcon, StarIcon } from "utils/icons";
@@ -128,6 +128,8 @@ const ProductDetail = () => {
 
   // console.log(router.query.slug);
   const dataInput = useNumberInput();
+  const { loadingState, handleSaveForLater, stateButton } = useSaveForLater();
+
   const [isOpen, toggleDialog] = useDialog();
   const [gallery, setGallery] = useState<Omit<GalleryState, "setCurrentPhoto">>(
     {
@@ -187,7 +189,7 @@ const ProductDetail = () => {
     const data: ProductProps = {
       img,
       title: "Half Running Set",
-      price: [99, 129],
+      price: 129,
       categories: ["SALE", "NEW"],
       colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
       link: "1",
@@ -293,8 +295,20 @@ const ProductDetail = () => {
                     <BiShare fontSize={20} />
                     &nbsp;Share
                   </button>
-                  <button className="flex items-center hover:bg-slate-100 rounded-md py-1 px-2">
-                    <HeartIcon fontSize={20} />
+                  <button
+                    onClick={handleSaveForLater}
+                    className="flex items-center hover:bg-slate-100 rounded-md py-1 px-2 justify-center"
+                  >
+                    {loadingState.isLoading ? (
+                      <span className="animate-spin w-4 h-4 border-2 border-slate-200 border-b-blue-500 rounded-full" />
+                    ) : (
+                      <HeartIcon
+                        fontSize={20}
+                        className={
+                          stateButton ? "fill-red-500 stroke-red-500" : ""
+                        }
+                      />
+                    )}
                     &nbsp;Save
                   </button>
                 </div>

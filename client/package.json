@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.12",
     "@reduxjs/toolkit": "^1.9.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.14.1",
     "@types/react": "18.0.28",

@@ -1,8 +1,35 @@
+export const slides = [
+  {
+    img: "/images/banner-2.png",
+    text: "New Winter<br>Collections 2023",
+    summary: "There's nothing like trend",
+    button: "Shop Now",
+    categories: ["Winter Collection", "New"],
+    url: "",
+  },
+  {
+    img: "/images/banner-3.png",
+    text: "New Winter<br>Collections 2023",
+    summary: "There's nothing like trend",
+    button: "Shop Now",
+    categories: ["Winter Collection"],
+    url: "",
+  },
+  {
+    img: "/images/banner-7.png",
+    text: "New Winter<br>Collections 2023",
+    summary: "There's nothing like trend",
+    button: "Shop Now",
+    categories: ["Winter Collection"],
+    url: "",
+  },
+];
+
 export const products = [
   {
     img: "/images/product_1.png",
     title: "Half Running Set",
-    price: [99, 129],
+    price: 99,
     categories: ["SALE", "NEW"],
     colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
     link: "1",
@@ -10,7 +37,7 @@ export const products = [
   {
     img: "/images/product_2.png",
     title: "Formal Men Lowers",
-    price: [99, 129],
+    price: 129,
     categories: ["SALE", "NEW"],
     colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
     link: "2",
@@ -18,7 +45,7 @@ export const products = [
   {
     img: "/images/product_3.png",
     title: "Half Running Suit",
-    price: [99, 129],
+    price: 129,
     categories: ["HOT"],
     colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
     link: "3",
@@ -26,7 +53,7 @@ export const products = [
   {
     img: "/images/product_4.png",
     title: "Half Fancy Lady Dress",
-    price: [99, 129],
+    price: 99,
     categories: [],
     colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
     link: "4",
@@ -34,7 +61,7 @@ export const products = [
   {
     img: "/images/product_5.png",
     title: "Flix Flox Jeans",
-    price: [99, 129],
+    price: 129,
     categories: ["HOT"],
     colors: ["#379788", "#d1dceb", "#e36947", "#f4e6a2"],
     link: "5",
@@ -42,7 +69,7 @@ export const products = [
   {
     img: "/images/product_6.png",
     title: "Fancy Salwar Suits",
-    price: [99, 129],
+    price: 129,
     categories: ["HOT"],
     colors: ["#379788", "#d1dceb", "#f4e6a2", "#f4e6a2"],
     link: "6",
@@ -50,7 +77,7 @@ export const products = [
   {
     img: "/images/product_7.png",
     title: "Printed Straight Kurta",
-    price: [99, 129],
+    price: 129,
     categories: ["SALE", "HOT"],
     colors: ["#6185c4", "#d1dceb", "#e36947", "#f4e6a2"],
     link: "7",
@@ -58,7 +85,7 @@ export const products = [
   {
     img: "/images/product_8.png",
     title: "Collot Full Dress",
-    price: [99, 129],
+    price: 129,
     categories: ["HOT"],
     colors: ["#becc36", "#d1dceb", "#e36947", "#f4e6a2"],
     link: "8",

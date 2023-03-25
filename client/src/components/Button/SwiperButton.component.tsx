@@ -1,5 +1,5 @@
-import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
-import React, { FC } from "react";
+import { FC } from "react";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { useSwiper } from "swiper/react";
 
 interface Props {
@@ -25,9 +25,9 @@ const SwiperButton: FC<Props> = ({
       }
     >
       {button === "left" ? (
-        <HiArrowLeft fontSize={size} />
+        <BsArrowLeft fontSize={size} />
       ) : (
-        <HiArrowRight fontSize={size} />
+        <BsArrowRight fontSize={size} />
       )}
     </button>
   );

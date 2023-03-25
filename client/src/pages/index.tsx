@@ -1,48 +1,32 @@
 import SwiperButton from "components/Button/SwiperButton.component";
 import Product from "components/Product/Product.component";
-import { Inter } from "next/font/google";
+import AddedToCart from "components/Toast/AddedToCart.component";
+import Toast from "components/Toast/Toast.component";
+import ToastProvider from "components/Toast/ToastProvider.component";
 import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import { Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { products } from "utils/data";
-
-const inter = Inter({ subsets: ["latin"] });
-
-const slideBtnClass =
-  "absolute w-[50px] h-[50px] rounded-full border border-[#121212] text-[#151515] flex item-centers z-[999] bottom-[10%] right-[40px] opacity-[0.7] flex items-center justify-center";
+import { buttonClasses } from "utils/classNames";
+import { products, slides } from "utils/data";
+import { classNames } from "utils/functions";
 
 export default function Home() {
-  const slides = [
-    {
-      img: "/images/banner-2.png",
-      text: "New Winter<br>Collections 2023",
-      summary: "There's nothing like trend",
-      button: "Shop Now",
-      categories: ["Winter Collection", "New"],
-      url: "",
-    },
-    {
-      img: "/images/banner-3.png",
-      text: "New Winter<br>Collections 2023",
-      summary: "There's nothing like trend",
-      button: "Shop Now",
-      categories: ["Winter Collection"],
-      url: "",
-    },
-    {
-      img: "/images/banner-7.png",
-      text: "New Winter<br>Collections 2023",
-      summary: "There's nothing like trend",
-      button: "Shop Now",
-      categories: ["Winter Collection"],
-      url: "",
-    },
-  ];
+  const [addedToCartArr, setArr] = useState<any>([]);
+  const slideBtnClass = useMemo(
+    () =>
+      classNames(
+        "absolute w-[50px] h-[50px]",
+        "rounded-full border-2 border-transparent hover:border-slate-200 text-slate-700 flex item-centers z-[999] bottom-[10%] right-[40px]",
+        "flex items-center justify-center"
+      ),
+    []
+  );
 
   return (
-    <>
+    <ToastProvider>
       <div className="">
         <div className="relative">
           <Swiper
@@ -55,13 +39,14 @@ export default function Home() {
           >
             <SwiperButton
               button="right"
-              size={28}
+              size={26}
               defaultClassName={slideBtnClass}
+              className="right-1 sm:right-5 top-3/4 sm:top-1/2 sm:-translate-y-1/2 z-10"
             />
             <SwiperButton
               button="left"
-              className="!right-[100px]"
-              size={28}
+              className="left-1 sm:left-5 top-3/4 sm:top-1/2 sm:-translate-y-1/2 z-10"
+              size={26}
               defaultClassName={slideBtnClass}
             />
 
@@ -87,7 +72,10 @@ export default function Home() {
                       </span>
                       <Link
                         href={url}
-                        className="bg-transparent border border-[#111111] text-[#111111] rounded-sm px-[25px] py-[12px] hover:bg-black hover:text-white transition-colors duration-300 ease-out inline-block mt-7"
+                        className={classNames(
+                          "transition-colors duration-300 ease-out mt-7",
+                          buttonClasses
+                        )}
                       >
                         {button}&nbsp; <span className="text-xl">&#8594;</span>
                       </Link>
@@ -126,6 +114,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-    </>
+    </ToastProvider>
   );
 }

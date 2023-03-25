@@ -3,6 +3,8 @@ import React from "react";
 import { classNames } from "utils/functions";
 import { BsEnvelope, BsCalendarWeek, BsPhone } from "react-icons/bs";
 import { inputClasses } from "utils/classNames";
+import { RiImageAddLine } from "react-icons/ri";
+import Image from "next/image";
 
 const AccountInformation = () => {
   const labelClasses = "text-base font-medium text-neutral-900 mb-1.5 block";
@@ -17,8 +19,22 @@ const AccountInformation = () => {
           Account infomation
         </h2>
 
-        <div className="flex space-x-24">
-          <div>a</div>
+        <div className="flex gap-10 flex-col sm:gap-20 sm:flex-row">
+          <div className="flex-shrink-0 self-center sm:self-start">
+            <div className="relative w-32 h-32 rounded-full overflow-hidden">
+              <Image src="/images/team-1.jpg" alt="" fill />
+              <div className="absolute flex flex-col items-center justify-center inset-0 bg-slate-900/50">
+                <RiImageAddLine className="mb-2 text-white" fontSize={26} />
+                <span className="text-white text-sm">Change Image</span>
+              </div>
+              <input
+                type="file"
+                name=""
+                id=""
+                className="absolute inset-0 opacity-0 cursor-pointer"
+              />
+            </div>
+          </div>
           <div className="space-y-6 flex-grow">
             <div>
               <label htmlFor="" className={labelClasses}>

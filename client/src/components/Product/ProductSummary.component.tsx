@@ -45,12 +45,17 @@ const ProductSummary: FC<Props> = ({
           Color:&nbsp;
           <span className="font-semibold">Black</span>
         </div>
-        <div>
+        <div className="space-x-3">
           {products[0].colors.map((color, index) => (
             <span
               key={index}
               style={{ backgroundColor: color }}
-              className="mr-4 relative inline-block rounded-full w-5 h-5 cursor-pointer before:border before:border-[#e3e9ef] before:w-[26px] before:h-[26px] before:block before:rounded-full before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:absolute"
+              className={classNames(
+                "relative inline-block rounded-full w-5 h-5 cursor-pointer",
+                "before:border before:border-[#e3e9ef]",
+                "before:w-[26px] before:h-[26px] before:block before:rounded-full",
+                "before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:absolute"
+              )}
             />
           ))}
         </div>
@@ -66,14 +71,14 @@ const ProductSummary: FC<Props> = ({
           <button className="text-blue-500">See sizing chart</button>
         </div>
 
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-5 sm:grid-cols-6 gap-2">
           {["XS", "S", "M", "L", "XL", "2XL", "3XL"].map((size, i) => (
             <span
               key={i}
               className={classNames(
                 "inline-flex items-center justify-center",
                 "border border-[border-color] rounded-2xl",
-                "font-semibold text-lg px-3 py-2 text-black",
+                "font-semibold text-sm sm:text-base h-10 sm:h-11 text-black uppercase",
                 i === 0 ? "!text-white bg-blue-500" : "",
                 i === 5 || i === 6 ? "opacity-30" : ""
               )}

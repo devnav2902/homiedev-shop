@@ -13,7 +13,7 @@ const AccountDashboardLayout: FC<Props> = ({ children }) => {
   const routes = [
     { url: "/account-dashboard/account-info", title: "Account info" },
     { url: "/account-dashboard/wishlist", title: "Save lists" },
-    { url: "/account-dashboard/my-order", title: "My order" },
+    { url: "/account-dashboard/order-history", title: "My order" },
     {
       url: "/account-dashboard/change-password",
       title: "Change password",
